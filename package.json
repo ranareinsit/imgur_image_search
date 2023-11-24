@@ -8,7 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "node-fetch": "^2.7.0"
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
