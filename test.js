@@ -1,11 +1,12 @@
-const { test, describe, it } = require('node:test');
-const assert = require('node:assert')
+const {describe, it} = require('node:test');
+const assert = require('node:assert');
 const {
-  combinator,
   checkLink,
-  check_imgur_image,
-  permutator
 } = require('./imgur.lib');
+const {
+  permutator,
+  combinator,
+} = require('./arrangement');
 
 describe('combinator', () => {
   it('should generate combinations for sets with different lengths', () => {
@@ -17,7 +18,7 @@ describe('combinator', () => {
       ['a', '3'],
       ['b', '1'],
       ['b', '2'],
-      ['b', '3']
+      ['b', '3'],
     ];
     assert.deepEqual(result.sort(), expected.sort());
   });
@@ -43,7 +44,7 @@ describe('combinator', () => {
       ['a', 'a'],
       ['a', 'b'],
       ['b', 'a'],
-      ['b', 'b']
+      ['b', 'b'],
     ];
     assert.deepEqual(result.sort(), expected.sort());
   });
@@ -66,11 +67,11 @@ describe('checkLink', () => {
 
 describe('/api.imgur.com/endpoints/image', () => {
   it('Get information about an image.', async () => {
-    let result = await check_imgur_image('d1635d0854bdfbc', 'vEdyJfO')
-    console.log(result)
+    const result = await check_imgur_image('d1635d0854bdfbc', 'vEdyJfO');
+    console.log(result);
     assert.ok(result);
-  })
-})
+  });
+});
 
 describe('permutator', () => {
   it('should generate all permutations for an array', () => {
@@ -103,5 +104,4 @@ describe('permutator', () => {
 
     assert.deepEqual(result.sort(), expected.sort());
   });
-
 });
