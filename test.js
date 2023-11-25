@@ -1,12 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 const {describe, it} = require('node:test');
 const assert = require('node:assert');
-const {
-  checkLink,
-} = require('./imgur.lib');
-const {
-  permutator,
-  combinator,
-} = require('./arrangement');
+
+const {checkLink, checkImgurImage} = require('./network');
+const {load, store} = require('./fs');
+const {permutator, combinator} = require('./arrangement');
 
 describe('combinator', () => {
   it('should generate combinations for sets with different lengths', () => {
@@ -67,7 +66,7 @@ describe('checkLink', () => {
 
 describe('/api.imgur.com/endpoints/image', () => {
   it('Get information about an image.', async () => {
-    const result = await check_imgur_image('d1635d0854bdfbc', 'vEdyJfO');
+    const result = await checkImgurImage('d1635d0854bdfbc', 'vEdyJfO');
     console.log(result);
     assert.ok(result);
   });
