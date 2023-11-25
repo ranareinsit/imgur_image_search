@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-const fs = require('node:fs');
-const https = require('node:https');
+import fs from 'node:fs';
+import https from 'node:https';
 /**
  * Checks if a given link is a valid image link with the expected content type and size.
  *
  * @param {string} link - The URL to check.
  * @return {Promise<boolean>} A promise that resolves to true if the link is valid, and false otherwise.
  */
-function checkLink(link) {
+export const checkLink = (link) => {
   return new Promise((resolve, reject) => {
     https.get(link, (res) => {
       const {statusCode, headers} = res;
@@ -55,7 +55,7 @@ function checkLink(link) {
       resolve(false);
     });
   });
-}
+};
 
 /**
  * Checks Imgur image information using the Imgur API.
@@ -80,7 +80,7 @@ function checkLink(link) {
  *   console.error(error);
  * }
  */
-function checkImgurImage(clientId, imageHash) {
+export const checkImgurImage = (clientId, imageHash) => {
   return new Promise((resolve, reject) => {
     const options = {
       'method': 'GET',
@@ -112,9 +112,4 @@ function checkImgurImage(clientId, imageHash) {
 
     req.end();
   });
-}
-
-module.exports = {
-  checkLink,
-  checkImgurImage,
 };

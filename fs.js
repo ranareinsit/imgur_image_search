@@ -7,7 +7,7 @@
  * each represented as an array with the variant string and its status.
  * @return {void} This function does not return a value.
  */
-function store(filePath, key, variants) {
+export const store = (filePath, key, variants) => {
   try {
     // Read existing data from the file
     const jsonData = load(filePath) || {};
@@ -18,7 +18,7 @@ function store(filePath, key, variants) {
   } catch (error) {
     console.error('Error storing data:', error.message);
   }
-}
+};
 
 
 /**
@@ -27,7 +27,7 @@ function store(filePath, key, variants) {
  * @param {string} filePath - The path to the JSON file.
  * @return {Object | null} The parsed JSON data, or null if file does not exist.
  */
-function load(filePath) {
+export const load = (filePath) => {
   if (fs.existsSync(filePath)) {
     // Read file content synchronously
     const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -40,9 +40,4 @@ function load(filePath) {
 
   // Return null if the file doesn't exist
   return null;
-}
-
-module.exports = {
-  load,
-  store,
 };

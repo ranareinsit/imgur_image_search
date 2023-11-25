@@ -6,7 +6,7 @@
  * @param {Array<Array>} sets - array of sets, where each set is represented as an array of elements.
  * @return {Array<Array>} array containing all possible combinations of elements from the provided sets.
  */
-function combinator(sets) {
+export const combinator = (sets) => {
   /**
        * @type {Array<Array>} result - An array to store the generated combinations.
        */
@@ -52,7 +52,7 @@ function combinator(sets) {
   }
 
   return result;
-}
+};
 
 
 /**
@@ -62,7 +62,7 @@ function combinator(sets) {
  * @param {number} size - The size restriction for each permutation.
  * @return {Array<Array>} An array containing all permutations of the input array with the specified size.
  */
-const permutator = (arr, size) => {
+export const permutator = (arr, size) => {
   const result = [];
   const stack = [];
   if (arr.length == 0) return [];
@@ -94,10 +94,4 @@ const permutator = (arr, size) => {
   }
 
   return result;
-};
-
-
-module.exports = {
-  combinator,
-  permutator,
 };

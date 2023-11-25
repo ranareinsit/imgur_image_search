@@ -1,11 +1,10 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-const {describe, it} = require('node:test');
-const assert = require('node:assert');
-
-const {checkLink, checkImgurImage} = require('./network');
-const {load, store} = require('./fs');
-const {permutator, combinator} = require('./arrangement');
+import {describe, it} from 'node:test';
+import assert from 'node:assert';
+import {checkLink, checkImgurImage} from './network.js';
+import {load, store} from './fs.js';
+import {permutator, combinator} from './arrangement.js';
 
 describe('combinator', () => {
   it('should generate combinations for sets with different lengths', () => {

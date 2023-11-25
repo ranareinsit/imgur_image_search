@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-const fs = require('node:fs');
-const https = require('node:https');
+import fs from 'node:fs';
+import https from 'node:https';
 // const path = require('node:path');
 
-const {checkLink, checkImgurImage} = require('./network');
-const {load, store} = require('./fs');
-const {permutator, combinator} = require('./arrangement');
+import {checkLink, checkImgurImage} from './network.js';
+import {load, store} from './fs.js';
+import {permutator, combinator} from './arrangement.js';
 // utils
 /**
  * Delays the execution for a specified duration using asynchronous sleep.
@@ -18,11 +18,11 @@ const {permutator, combinator} = require('./arrangement');
  * // Sleep for 2 seconds
  * await sleep(2000);
  */
-function sleep(amount = 1000) {
+export const sleep = (amount = 1000) => {
   return new Promise((resolve) => {
     setTimeout(resolve, amount);
   });
-}
+};
 
 /**
  * Propagates and persists permutations of the characters in a hash.
@@ -38,7 +38,7 @@ function sleep(amount = 1000) {
  * const inputHash = 'your_hash';
  * propagate_persist(inputHash);
  */
-function propagatePersist(hash) {
+export const propagatePersist = (hash) => {
   /**
    * @type {Array} splitted - An array containing individual characters of the input hash.
    */
@@ -56,7 +56,7 @@ function propagatePersist(hash) {
 
   // Persist the generated permutations to a JSON file
   store('./storage.json', hash, result);
-}
+};
 
 
 /**
@@ -76,7 +76,7 @@ function propagatePersist(hash) {
  * const foundImages = await traverse_persist(inputHash);
  * console.log(foundImages);
  */
-async function traversePersist(hash) {
+export const traversePersist = async (hash) => {
   /**
    * @type {Array<string>} key - An array containing permutations of the input hash.
    */
@@ -131,12 +131,4 @@ async function traversePersist(hash) {
 
   // Return the array containing information about found images
   return found;
-}
-
-module.exports = {
-  load,
-  sleep,
-  store,
-  propagatePersist,
-  traversePersist,
 };

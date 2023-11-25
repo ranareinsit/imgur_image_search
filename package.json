@@ -4,12 +4,14 @@
   "description": "",
   "main": "imgur-walker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint ./*.js --fix",
+    "test": "node ./test.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.54.0",
     "eslint-config-google": "^0.14.0"
-  }
+  },
+  "type": "module"
 }
